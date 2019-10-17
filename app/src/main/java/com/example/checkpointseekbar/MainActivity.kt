@@ -14,13 +14,13 @@ class MainActivity : AppCompatActivity() {
         var checkMarks = ArrayList<CheckPoint>()
 
         checkMarks.add(
-            CheckPoint("200", "22", 22, "30", true)
+            CheckPoint("200", "22", 22, "30", false)
         )
-        checkMarks.add(CheckPoint("400", "30", 30, "40", true))
+        checkMarks.add(CheckPoint("400", "30", 30, "40", false))
         checkMarks.add(CheckPoint("600", "36", 36, "60", false))
         checkMarks.add(CheckPoint("800", "44", 44, "80", false))
         customProgressBar.setCheckPoints(checkMarks)
-
+        val areAllCheckPointsNotMet = areAllCheckPointsNotMet(checkMarks)
 
         seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -30,18 +30,27 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                for (checkPoint in checkMarks) {
-                    if (checkPoint.someCondition) {
-                        if(checkPoint.progress >= progress) {
-                            customProgressBar.progress = progress
-                            progress_text.setText(progress.toString())
-                        } else {
-                            customProgressBar.progress = checkPoint.progress
-                            progress_text.setText(progress.toString())
+                if (areAllCheckPointsNotMet) {
+                    if (progress >= checkMarks[0].progress) {
+                        customProgressBar.progress = checkMarks[0].progress - 1
+                        progress_text.setText(customProgressBar.progress.toString())
+                    } else {
+                        customProgressBar.progress = progress
+                        progress_text.setText(progress.toString())
+                    }
+                } else {
+                    for (checkPoint in checkMarks) {
+                        if (checkPoint.someCondition) {
+                            if (checkPoint.progress >= progress) {
+                                customProgressBar.progress = progress
+                                progress_text.setText(progress.toString())
+                            } else {
+                                customProgressBar.progress = checkPoint.progress
+                                progress_text.setText(progress.toString())
+                            }
                         }
                     }
                 }
-
             }
 
         })
@@ -52,5 +61,12 @@ class MainActivity : AppCompatActivity() {
                 e.printStackTrace()
             }
         }
+    }
+
+    fun areAllCheckPointsNotMet(checkPoints: List<CheckPoint>): Boolean {
+        for (checkPoint in checkPoints) {
+            if (checkPoint.someCondition) return false
+        }
+        return true
     }
 }
