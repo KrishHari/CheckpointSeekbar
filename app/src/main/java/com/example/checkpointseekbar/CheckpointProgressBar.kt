@@ -213,7 +213,7 @@ class CheckpointProgressBar : ProgressBar {
                     nonNullCanvas.translate(0f, -1 * (mCompletedCheckPointTextPadding + h / 2 + TEXT_SIZE / 2).toFloat())
                     it.topText?.let { topText ->
                         mCheckPoints?.findClosest(progress)?.let { pair ->
-                            if (index == pair.first) {
+                            if (index == pair.first && it.someCondition) {
                                 nonNullCanvas.drawText(topText, 0f, 0f, textPaintSelected)
                             } else {
                                 nonNullCanvas.drawText(topText, 0f, 0f, textPaint)

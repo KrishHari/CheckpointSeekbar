@@ -5,4 +5,5 @@ class CheckPoint(
     val bottomText: String?,
     val progress: Int,
     val secondBottomText: String?,
+    // Condition calculated from backend
     val someCondition:Boolean)

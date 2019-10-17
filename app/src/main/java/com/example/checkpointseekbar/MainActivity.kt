@@ -31,9 +31,14 @@ class MainActivity : AppCompatActivity() {
 
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 for (checkPoint in checkMarks) {
-                    if (checkPoint.someCondition && checkPoint.progress>=progress) {
-                        customProgressBar.progress = progress
-                        progress_text.setText(progress.toString())
+                    if (checkPoint.someCondition) {
+                        if(checkPoint.progress >= progress) {
+                            customProgressBar.progress = progress
+                            progress_text.setText(progress.toString())
+                        } else {
+                            customProgressBar.progress = checkPoint.progress
+                            progress_text.setText(progress.toString())
+                        }
                     }
                 }
 
