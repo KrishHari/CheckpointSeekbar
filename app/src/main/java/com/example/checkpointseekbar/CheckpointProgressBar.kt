@@ -177,7 +177,7 @@ class CheckpointProgressBar : ProgressBar {
                     val saveCount = nonNullCanvas.save()
                     nonNullCanvas.translate(0f, (height / 2).toFloat())
                     val h: Int?
-                    if (it.progress <= progress) {
+                    if (it.progress <= progress && it.someCondition) {
                         val w = mCompletedCheckMark?.intrinsicWidth
 
                         h = mCompletedCheckMark?.intrinsicHeight
@@ -213,7 +213,7 @@ class CheckpointProgressBar : ProgressBar {
                     nonNullCanvas.translate(0f, -1 * (mCompletedCheckPointTextPadding + h / 2 + TEXT_SIZE / 2).toFloat())
                     it.topText?.let { topText ->
                         mCheckPoints?.findClosest(progress)?.let { pair ->
-                            if (index == pair.first) {
+                            if (index == pair.first && it.someCondition) {
                                 nonNullCanvas.drawText(topText, 0f, 0f, textPaintSelected)
                             } else {
                                 nonNullCanvas.drawText(topText, 0f, 0f, textPaint)
