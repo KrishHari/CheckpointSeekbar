@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <com.example.checkpointseekbar.CustomProgressBar
+    <com.example.checkpointseekbar.CheckpointProgressBar
             android:layout_width="match_parent"
             android:id="@+id/customProgressBar"
             android:layout_height="60dp"
@@ -16,12 +16,12 @@
             android:layout_margin="10dp"
             app:text_color="@color/grey"
             app:selected_text_color="@color/colorAccent"
-            app:tick_drawable="@drawable/ic_tick"
+            app:ic_completed_drawable="@drawable/ic_tick"
             app:top_label="MileStone pay"
             app:bottom_label="TouchPoints"
             app:top_label_drawable="@drawable/ic_locked"
             app:bottom_label_drawable="@drawable/ic_tick"
-            app:lock_drawable="@drawable/ic_locked"
+            app:ic_incomplete_drawable="@drawable/ic_locked"
             app:label_padding="10dp"
             app:text_size="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
