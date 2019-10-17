@@ -14,11 +14,11 @@ class MainActivity : AppCompatActivity() {
         var checkMarks = ArrayList<CheckPoint>()
 
         checkMarks.add(
-            CheckPoint("200", "22", 22, "30")
+            CheckPoint("200", "22", 22, "30", true)
         )
-        checkMarks.add(CheckPoint("400", "30", 30, "40"))
-        checkMarks.add(CheckPoint("600", "36", 36, "60"))
-        checkMarks.add(CheckPoint("800", "44", 44, "80"))
+        checkMarks.add(CheckPoint("400", "30", 30, "40", true))
+        checkMarks.add(CheckPoint("600", "36", 36, "60", false))
+        checkMarks.add(CheckPoint("800", "44", 44, "80", false))
         customProgressBar.setCheckPoints(checkMarks)
 
 
@@ -30,8 +30,13 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                customProgressBar.progress = progress
-                progress_text.setText(progress.toString())
+                for (checkPoint in checkMarks) {
+                    if (checkPoint.someCondition && checkPoint.progress>=progress) {
+                        customProgressBar.progress = progress
+                        progress_text.setText(progress.toString())
+                    }
+                }
+
             }
 
         })

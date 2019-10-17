@@ -4,4 +4,5 @@ class CheckPoint(
     val topText: String?,
     val bottomText: String?,
     val progress: Int,
-    val secondBottomText: String?)
+    val secondBottomText: String?,
+    val someCondition:Boolean)

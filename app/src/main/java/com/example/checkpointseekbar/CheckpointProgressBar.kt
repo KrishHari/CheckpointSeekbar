@@ -177,7 +177,7 @@ class CheckpointProgressBar : ProgressBar {
                     val saveCount = nonNullCanvas.save()
                     nonNullCanvas.translate(0f, (height / 2).toFloat())
                     val h: Int?
-                    if (it.progress <= progress) {
+                    if (it.progress <= progress && it.someCondition) {
                         val w = mCompletedCheckMark?.intrinsicWidth
 
                         h = mCompletedCheckMark?.intrinsicHeight
