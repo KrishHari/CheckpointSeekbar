@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="CustomProgressBar">
+    <declare-styleable name="CheckpointProgressBar">
         <attr name="selected_text_color" format="color"/>
         <attr name="text_color" format="color"/>
         <attr name="text_size" format="dimension"/>
-        <attr name="tick_drawable" format="reference"/>
-        <attr name="lock_drawable" format="reference"/>
+        <attr name="ic_completed_drawable" format="reference"/>
+        <attr name="ic_incomplete_drawable" format="reference"/>
         <attr name="label_padding" format="dimension"/>
         <attr name="font_family" format="reference"/>
         <attr name="top_label" format="string"/>
